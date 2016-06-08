@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "keystone": "^0.3.16",
+    "ejs": "*",
     "async": "^1.5.0",
     "underscore": "^1.8.3",
     "dotenv": "^1.1.0"

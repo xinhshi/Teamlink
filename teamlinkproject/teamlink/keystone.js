@@ -9,15 +9,18 @@ var keystone = require('keystone');
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 
+
+
 keystone.init({
 
 	'name': 'TEAMLINK',
 	'brand': 'TEAMLINK',
 
 	'less': 'public',
-'static': 'public',
+    'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
+
 	'view engine': 'jade',
 
 	'emails': 'templates/emails',
@@ -28,6 +31,7 @@ keystone.init({
 	'user model': 'User',
 
 });
+
 
 // Load your project's Models
 
@@ -81,5 +85,6 @@ keystone.set('nav', {
 });
 
 // Start Keystone to connect to your database and initialise the web server
+
 
 keystone.start();
