@@ -22,6 +22,12 @@ var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
 
+//added for html path
+var express = require("express");
+var app     = express();
+var path    = require("path");
+
+
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('render', middleware.flashMessages);
@@ -33,11 +39,20 @@ var routes = {
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
+    
+
 	// Views
 	app.get('/', routes.views.index);
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
-	
+    
+    app.get('/dcm',function(req,res){
+    res.sendFile(path.join(__dirname,'../templates/views','dcm.html'));
+  //__dirname : It will resolve to your project folder.
+});
+	app.get('/document', routes.views.document);
+
+
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };
