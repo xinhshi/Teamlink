@@ -8,6 +8,9 @@ app.config(
     }).when('/blog', {
 		  templateUrl: 'js/app/blog/blogList.html',
 		  controller: 'BlogController'
+    }).when('/blog/add', {
+		  templateUrl: 'js/app/blog/blogAdd.html',
+		  controller: 'BlogController'
     }).when('/document', {
 		  templateUrl: 'js/app/document/documentList.html',
 		  controller: 'DocumentController'
