@@ -1,0 +1,10 @@
+<h2>Files List</h2>
+
+<ul class="unstyled">
+<li ng-repeat="todo in todos">
+    <label class="checkbox">
+    <input type="checkbox" ng-model="todo.done">
+    <span class="done-{{todo.done}}">{{todo.text}}</span>
+    </label>
+</li>
+</ul>

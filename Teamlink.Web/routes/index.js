@@ -44,8 +44,8 @@ exports = module.exports = function (app) {
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
     
-    app.get('/document', function(req,res){
-    	res.sendFile(path.join(__dirname,'../templates/views/document','demo.html'));
+    app.get('/app', function(req,res){
+    	res.sendFile(path.join(__dirname,'../templates/views','app.html'));
 	});
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
