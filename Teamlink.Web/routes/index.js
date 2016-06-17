@@ -39,10 +39,12 @@ var routes = {
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
+    
 
+	// Views
 	app.get('/', routes.views.index);
 	app.get('/blog/:category?', routes.views.blog);
-	app.get('/blog/post/:post', routes.views.post);
+	app.all('/blog/post/:post', routes.views.post);
     
     app.get('/app', function(req,res){
     	res.sendFile(path.join(__dirname,'../templates/views','app.html'));
