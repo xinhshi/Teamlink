@@ -45,6 +45,7 @@ keystone.set('locals', {
 	_: require('underscore'),
 	env: keystone.get('env'),
 	utils: keystone.utils,
+	plural: keystone.utils.plural,
 	editable: keystone.content.editable,
 });
 
@@ -82,6 +83,8 @@ keystone.set('email tests', require('./routes/emails'));
 keystone.set('nav', {
 	posts: ['posts', 'post-comments', 'post-categories'],
 	users: 'users',
+	tasks: ['tasks', 'talks', 'rsvps'],
+
 });
 
 // Start Keystone to connect to your database and initialise the web server

@@ -1,0 +1,10 @@
+extends ../layouts/default
+
+include ../mixins/task
+
+block content
+	.container-sm
+		.page-intro.text-left
+			a(href='/tasks').text-muted &larr; Back to all tasks
+		.page-content
+			+task(task)

@@ -50,6 +50,8 @@ exports = module.exports = function (app) {
     	res.sendFile(path.join(__dirname,'../templates/views','app.html'));
 	});
 
+	app.get('/tasks', routes.views.tasks);
+	app.get('/tasks/:task', routes.views.task);
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };
