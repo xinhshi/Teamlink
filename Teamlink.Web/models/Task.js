@@ -17,15 +17,16 @@ Task.add({
 	name: { type: String, required: true, initial: true },
 	publishedDate: { type: Types.Date, index: true },
 
-	state: { type: Types.Select, options: 'draft, scheduled, active, past', default: 'draft', index: true },
+	state: { type: Types.Select, options: 'draft, scheduled, active, past', noedit: true },
 
-	startDate: { type: Types.Datetime, required: true, initial: true, index: true, width: 'short', note: 'e.g. 2016-06-15 / 6:00pm' },
-	endDate: { type: Types.Datetime, required: true, initial: true, index: true, width: 'short', note: 'e.g. 2016-06-15 / 9:00pm' },
+	startDate: { type: Types.Datetime, required: true, initial: true, index: true, width: 'short', note: 'e.g. 2016-07-15 / 10:00am' },
+	endDate: { type: Types.Datetime, required: true, initial: true, index: true, width: 'short', note: 'e.g. 2016-07-15 / 3:00pm' },
 
 	place: { type: String, required: false, initial: true, width: 'medium', default: 'Shanghai', note: 'Usually Shanghai' },
+	map: { type: String, required: false, initial: true, width: 'medium', default: 'Shanghai', note: 'Shanghai' },
 	description: { type: Types.Html, wysiwyg: true },
 
-	maxRSVPs: { type: Number, default: 10 },
+	maxRSVPs: { type: Number, default: 100 },
 	totalRSVPs: { type: Number, noedit: true },
 
 	legacy: { type: Boolean, noedit: true, collapse: true },
@@ -37,7 +38,7 @@ Task.add({
 // Relationships
 // ------------------------------
 
-Task.relationship({ ref: 'Talk', refPath: 'task', path: 'talks' });
+Task.relationship({ ref: 'TaskComment', refPath: 'task', path: 'taskcomments' });
 Task.relationship({ ref: 'RSVP', refPath: 'task', path: 'rsvps' });
 
 

@@ -10,19 +10,18 @@ exports = module.exports = function(req, res) {
 		locals = res.locals;
 	
 	locals.section = 'tasks';
-	//locals.page.title = 'Tasks - Mobility';
 	
 	view.query('upcomingTask',
 		Task.model.findOne()
 			.where('state', 'active')
 			.sort('-startDate')
-	, 'talks[who]');
+	, 'taskcomments[who]');
 	
 	view.query('pastTasks',
-		Task.model.find()   
-			.where('state', 'past')
+		Task.model.find()
+		//	.where('state', 'past')
 			.sort('-startDate')
-	, 'talks[who]');
+	, 'taskcomments[who]');
 	
 	view.on('render', function(next) {
 	

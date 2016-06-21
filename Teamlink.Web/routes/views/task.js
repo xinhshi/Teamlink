@@ -9,7 +9,6 @@ exports = module.exports = function(req, res) {
 		locals = res.locals;
 	
 	locals.section = 'tasks';
-	//locals.page.title = 'Tasks - Mobility';
 	
 	locals.rsvpStatus = {};
 	
@@ -25,7 +24,7 @@ exports = module.exports = function(req, res) {
 				if (!task) return res.notfound('Post not found');
 				
 				locals.task = task;
-				locals.task.populateRelated('talks[who] rsvps[who]', next);
+				locals.task.populateRelated('taskcomments[who] rsvps[who]', next);
 				
 			});
 	});

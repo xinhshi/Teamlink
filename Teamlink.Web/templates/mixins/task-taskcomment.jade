@@ -1,0 +1,28 @@
+mixin task-taskcomment(taskcomment)
+	li.row.talk
+		.col-xs-3.col-sm-2
+			.talk__speakers
+				if taskcomment.who.length
+					each speaker, i in taskcomment.who
+						img(src=speaker.photo.exists ? speaker._.photo.thumbnail(320,320) : speaker.avatarUrl || '/images/avatar.png', width=160, height=160, alt=speaker.name.full, class=taskcomment.who.length > 1 ? 'taskcomment__photo--mini' : null).talk__photo
+				else
+					img(src='/images/avatar.png', width=160, height=160, alt='There is no speaker...').taskcomment__photo
+			
+		.col-xs-9.col-sm-10
+			.talk-summary
+				h4.title #{taskcomment.name} 
+				if taskcomment.who.length
+					p.subtitle.mb-1 by 
+						each speaker, i in taskcomment.who
+							if i
+								| , 
+							if speaker.isPublic 
+								a(href=speaker.url)=speaker.name.full
+							else
+								=speaker.name.full
+				if taskcomment.description
+					!=taskcomment.description
+				if taskcomment.link
+					a(href=taskcomment.link, target='_blank', title='View the website for this talk')
+						| #{taskcomment.link} 
+						span.entypo.entypo-chevron-small-right

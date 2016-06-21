@@ -1,26 +1,26 @@
-include task-talk
+include task-taskcomment
 
 mixin task(task)
 
 	- var today = new Date();
 
 	.tile.ph-1.pv-1
-		.task-calendar.calendar.hidden-xs.hidden-sm(class=task.state == 'past' ? 'calendar--past' : null)
+		.meetup-calendar.calendar.hidden-xs.hidden-sm(class=task.state == 'past' ? 'calendar--past' : null)
 			.calendar__header=task._.startDate.format('MMM')
 			.calendar__body
 				.calendar__date=task._.startDate.format('DD')
 				.calendar__year=task._.startDate.format('YYYY')
-		.task-content
+		.meetup-content
 			h2.mv-5= task.name
 			h5.mb-1=task._.startDate.format('dddd D MMM YYYY')
 				|  from #{task._.startDate.format('h:mma')} - #{task._.endDate.format('h:mma')}
 			if task.description
 				p!= task.description
-			if task.talks.length
+			if task.taskcomments.length
 				hr.mv-2
-				ul.task-talks
-					each talk in task.talks
-						+task-talk(talk)
+				ul.task-taskcomments
+					each taskcomment in task.taskcomments
+						+task-taskcomment(taskcomment)
 
 		if task.state == 'active'
 			hr.mv-2
@@ -28,17 +28,17 @@ mixin task(task)
 				if task.rsvpsAvailable || rsvpStatus.rsvped && rsvpStatus.attending
 					h4.hero-button-title Are you coming? 
 					//	span.text-thin (#{plural(task.remainingRSVPs, '* spot left', '* spots left')})
-					include ../layouts/attendance-toggle
+					//include ../includes/attendance-toggle
 				else
-					.alert.alert-success.mb-0.text-center No more tickets...
+					.alert.alert-success.mb-0.text-center No more space...
 			
 			else
 				#next-task(data-id=task.id)
 					if task.rsvpsAvailable
-						a(href='/join', data-from=page.path).btn.btn-primary.btn-lg.btn-block.js-auth-trigger RSVP Now 
-							span.text-thin (#{plural(task.remainingRSVPs, '* spot left', '* spots left')})
+						//a(href='/join', data-from=page.path).btn.btn-primary.btn-lg.btn-block.js-auth-trigger RSVP Now 
+						//	span.text-thin (#{plural(task.remainingRSVPs, '* spot left', '* spots left')})
 					else
-						.alert.alert-success.mb-0.text-center No more tickets...
+						.alert.alert-success.mb-0.text-center No more space...
 		else if task.totalRSVPs
 			hr
 			.text-center

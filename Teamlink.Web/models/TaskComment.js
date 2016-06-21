@@ -7,26 +7,26 @@ var Types = keystone.Field.Types;
  * ===========
  */
 
-var Talk = new keystone.List('Talk', {
+var TaskComment = new keystone.List('TaskComment', {
 	track: true,
 	sortable: true,
-	sortContext: 'Task:talks'
+	sortContext: 'Task:taskcomments'
 });
 
-Talk.add({
+TaskComment.add({
 	name: { type: String, required: true, initial: true },
 	isLightningTalk: { type: Boolean },
 	task: { type: Types.Relationship, ref: 'Task', required: true, initial: true, index: true },
 	who: { type: Types.Relationship, ref: 'User', many: true, index: true },
 	description: { type: Types.Html, wysiwyg: true },
-	slides: { type: Types.Url },
+	//slides: { type: Types.Url },
 	link: { type: Types.Url }
 });
 
-Talk.schema.set('toJSON', {
+TaskComment.schema.set('toJSON', {
 	virtuals: true,
 	transform: function(doc, rtn, options) {
-		rtn = _.pick(rtn, '_id', 'name', 'place', 'map', 'description', 'slides', 'link');
+		rtn = _.pick(rtn, '_id', 'name', 'place', 'map', 'description', 'link');
 		if (doc.who) {
 			rtn.who = doc.who.map(function(i) {
 				return {
@@ -45,5 +45,5 @@ Talk.schema.set('toJSON', {
  * ============
  */
 
-Talk.defaultColumns = 'name, task|20%, who|20%';
-Talk.register();
+TaskComment.defaultColumns = 'name, task|20%, who|20%';
+TaskComment.register();

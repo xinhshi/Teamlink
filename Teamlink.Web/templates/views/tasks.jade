@@ -1,10 +1,11 @@
 extends ../layouts/default
 include ../mixins/task
 
-block content
-	.container
-		h1 Tasks
-			p.lead We usually meet up the 3rd Wednesday of every month. We hope to see you at 
+block intro
+	.container-sm
+		.page-intro
+			//h1.page-title Meetups
+			p.lead We usually meet up on Monday of every week. We hope to see you at 
 				if !user
 					a(href='/join').js-auth-trigger our&nbsp;next&nbsp;task
 				else
@@ -15,19 +16,23 @@ block content
 		if upcomingTask
 			+task(upcomingTask)
 block content
-	.page-content: .container  
+	.page-content: .container
 		.timeline
 			.timeline-path
 			.timeline-item--offset
-			each task, i in pastTasks
+			each task, i in pastTasks 
 				.timeline-item(class=i % 2 == 1 ? 'timeline-item--even' : 'timeline-item--odd')
 					.timeline-item-node
 					a(href=task.url).timeline-item-inner
 						h6.text-caps.text-danger= task._.startDate.format('YYYY - MMMM ')
 						h4= task.name
 						!=utils.cropString( utils.htmlToText(task.description), 240, '...', true )
-						//- !=utils.htmlToText(task.description)
+						//- !=utils.htmlToText(meetup.description)
 		
 		if !upcomingTask && !pastTasks.length
-			h3.text-muted There are no taskS yet.
+			h3.text-muted There are no tasks yet.
 
+//- block js
+	// twitter
+	script.
+		!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");

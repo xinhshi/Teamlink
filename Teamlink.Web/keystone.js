@@ -83,7 +83,7 @@ keystone.set('email tests', require('./routes/emails'));
 keystone.set('nav', {
 	posts: ['posts', 'post-comments', 'post-categories'],
 	users: 'users',
-	tasks: ['tasks', 'talks', 'rsvps'],
+	tasks: ['tasks', 'task-comments', 'rsvps'],
 
 });
 
