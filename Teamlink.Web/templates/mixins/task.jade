@@ -13,7 +13,7 @@ mixin task(task)
 		.meetup-content
 			h2.mv-5= task.name
 			h5.mb-1=task._.startDate.format('dddd D MMM YYYY')
-				|  from #{task._.startDate.format('h:mma')} - #{task._.endDate.format('h:mma')}
+				|  #{task._.startDate.format('h:mma')} - #{task._.endDate.format('dddd D MMM YYYY h:mma')}
 			if task.description
 				p!= task.description
 			if task.taskcomments.length

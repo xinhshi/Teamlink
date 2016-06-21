@@ -14,7 +14,7 @@ exports = module.exports = function(req, res) {
 	view.query('upcomingTask',
 		Task.model.findOne()
 			.where('state', 'active')
-			.sort('-startDate')
+			.sort('startDate')
 	, 'taskcomments[who]');
 	
 	view.query('pastTasks',
