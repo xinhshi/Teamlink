@@ -23,7 +23,7 @@ Task.add({
 	endDate: { type: Types.Datetime, required: true, initial: true, index: true, width: 'short', note: 'e.g. 2016-07-15 / 3:00pm' },
 
 	place: { type: String, required: false, initial: true, width: 'medium', default: 'Shanghai', note: 'Usually Shanghai' },
-	map: { type: String, required: false, initial: true, width: 'medium', default: 'Shanghai', note: 'Shanghai' },
+	//map: { type: String, required: false, initial: true, width: 'medium', default: 'Shanghai', note: 'Shanghai' },
 	description: { type: Types.Html, wysiwyg: true },
 
 	maxRSVPs: { type: Number, default: 100 },
@@ -130,7 +130,7 @@ Task.schema.methods.notifyAttendees = function(req, res, next) {
 
 Task.schema.set('toJSON', {
 	transform: function(doc, rtn, options) {
-		return _.pick(doc, '_id', 'name', 'startDate', 'endDate', 'place', 'map', 'description', 'rsvpsAvailable', 'remainingRSVPs');
+		return _.pick(doc, '_id', 'name', 'startDate', 'endDate', 'place', 'description', 'rsvpsAvailable', 'remainingRSVPs');
 	}
 });
 

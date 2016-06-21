@@ -19,7 +19,7 @@ exports = module.exports = function(req, res) {
 	
 	view.query('pastTasks',
 		Task.model.find()
-		//	.where('state', 'past')
+			.where('state').ne( 'draft' )
 			.sort('-startDate')
 	, 'taskcomments[who]');
 	
