@@ -1,9 +1,10 @@
 extends ../layouts/default
 include ../mixins/task
 
-
-block content
-	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+block intro
+	.container-sm
+		.page-intro
+			//h1.page-title Meetups
 			p.lead We usually meet up on Monday of every week. We hope to see you at 
 				if !user
 					a(href='/join').js-auth-trigger our&nbsp;next&nbsp;task
@@ -12,10 +13,10 @@ block content
 				| . Stay in the loop - 
 				a(href='http://www.sydjs.com/meetups', target='_blank') see the demo
 
-				if upcomingTask
-					+task(upcomingTask)
-
-	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+		if upcomingTask
+			+task(upcomingTask)
+block content
+	.page-content: .container
 		.timeline
 			.timeline-path
 			.timeline-item--offset
