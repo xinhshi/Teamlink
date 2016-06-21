@@ -1,10 +1,8 @@
 extends ../layouts/default
 include ../mixins/task
 
-block intro
-	.container-sm
-		.page-intro
-			//h1.page-title Meetups
+block content
+	.container: .jumbotron
 			p.lead We usually meet up on Monday of every week. We hope to see you at 
 				if !user
 					a(href='/join').js-auth-trigger our&nbsp;next&nbsp;task
@@ -13,10 +11,9 @@ block intro
 				| . Stay in the loop - 
 				a(href='http://www.sydjs.com/meetups', target='_blank') see the demo
 
-		if upcomingTask
-			+task(upcomingTask)
-block content
-	.page-content: .container
+			if upcomingTask
+				+task(upcomingTask)
+	.container:.row
 		.timeline
 			.timeline-path
 			.timeline-item--offset
