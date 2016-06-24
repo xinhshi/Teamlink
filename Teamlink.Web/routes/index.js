@@ -53,9 +53,8 @@ exports = module.exports = function (app) {
     	res.sendFile(path.join(__dirname,'../templates/views','app.html'));
 	});
 
-    app.get('/api/document/list', routes.api.document.list);
-	app.get('/api/document/:slug', routes.api.document.get);
-    
+    app.get('/api/document/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.document.list);
+	
 	//angbootm
      app.get('/api/post/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.list);
 	 app.all('/api/post/create', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.create);
