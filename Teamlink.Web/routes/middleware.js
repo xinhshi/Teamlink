@@ -24,7 +24,8 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'Home', key: 'home', href: '/' },
 		{ label: 'BBS', key: 'blog', href: '/blog' },
 	    { label: 'App', key: 'app', href: '/app' },
-		{ label: 'Angular BootMat',		key: 'and_bootm',		href: '/ang_bootm' }
+		{ label: 'Angular BootMat',	key: 'and_bootm', href: '/ang_bootm' },
+		{ label: 'Cloudcmd', key: 'cloudcmd', href: 'http://localhost:1337/cloudcmd/' }
 
 	];
 	res.locals.user = req.user;
