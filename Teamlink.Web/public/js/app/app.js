@@ -1,4 +1,4 @@
-var app = angular.module('teamlink', ['ngRoute', 'teamlink_home', 'teamlink_blog', 'teamlink_document']);
+var app = angular.module('teamlink', ['ngRoute', 'teamlink_home', 'teamlink_blog', 'teamlink_document', 'teamlink_post']);
 
 app.config(
   function($routeProvider) {
@@ -6,11 +6,8 @@ app.config(
 		  templateUrl: 'js/app/home/home.html',
 		  controller: 'HomeController'
     }).when('/blog', {
-		  templateUrl: 'js/app/blog/blogList.html',
-		  controller: 'BlogController'
-    }).when('/blog/add', {
-		  templateUrl: 'js/app/blog/blogAdd.html',
-		  controller: 'BlogController'
+		  templateUrl: 'js/app/post/post.html',
+		  controller: 'PostController'
     }).when('/document', {
 		  templateUrl: 'js/app/document/documentList.html',
 		  controller: 'DocumentController'

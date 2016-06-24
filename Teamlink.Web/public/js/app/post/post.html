@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="blog" ng-repeat="post in postList">
+                <div class="post media"/>
+                <div class="media-left">
+                    <a href="/blog/post/team-meeting-minutes-on-6172017">
+                        <img class="media-object" src="http://placehold.it/80x80"/>
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading">
+                        <a href="/blog/post/team-meeting-minutes-on-6172017">{{post.title}}</a>
+                    </h3>
+                    <p class="lead text-muted">Posted by {{post.author}}</p>
+                    <p/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4"/>
+    </div>
+</div>
