@@ -8,7 +8,7 @@
  * modules in your project's /lib directory.
  */
 var _ = require('underscore'),
-    querystring = require('querystring'),
+	querystring = require('querystring'),
 	keystone = require('keystone');
 
 
@@ -24,6 +24,7 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'Home', key: 'home', href: '/' },
 		{ label: 'BBS', key: 'blog', href: '/blog' },
 	    { label: 'App', key: 'app', href: '/app' },
+	    { label: 'Task', key: 'task', href: '/tasks' },
 		{ label: 'Angular BootMat',	key: 'and_bootm', href: '/ang_bootm' },
 		{ label: 'Cloudcmd', key: 'cloudcmd', href: 'http://localhost:1337/cloudcmd/' }
 
