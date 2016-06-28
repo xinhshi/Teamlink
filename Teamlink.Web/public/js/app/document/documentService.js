@@ -1,37 +1,11 @@
 angular.module('teamlink_document_service', ['ngResource'])
 
-.factory('DocumentService', ['$resource', function($resource) {
+.factory('DocumentService', ['$resource', function() {
+    var service = {};
     
-    // remote web service api
-    function addItem(doc) {
-        
-    };
+    service.multiply = function(a, b) {
+       return a * b
+    }
 
-    function updateItem(doc) {
-        
-    };
-    
-    function removeItem(id) {
-        
-    };
-
-    function allItems() {
-        return $resource(host + 'api/document/:slug', {}, {
-            query: {method:'GET', params:{slug:'list'}, isArray:true}
-        });
-    };
-    
-    function fetchItem(id) {
-        
-    };
-    
-    // wrapper
-    
-    return {
-        add: addItem,
-        update: updateItem,
-        remove: removeItem,
-        allItems: allItems,
-        item: fetchItem
-    };
-}])
+    return service;
+}]);
