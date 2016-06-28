@@ -38,12 +38,12 @@ var routes = {
 	views: importRoutes('./views'),
 	api: importRoutes('./api'),
 	ang_bootm: importRoutes('./ang_bootm')
+
 };
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
     
-
 	// Views
 	app.get('/', routes.views.index);
 	app.get('/blog/:category?', routes.views.blog);
@@ -55,17 +55,28 @@ exports = module.exports = function (app) {
 
     app.get('/api/document/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.document.list);
 	
+	app.get('/tasks', routes.views.tasks);
+	app.get('/tasks/:task', routes.views.task);
+	// Task API
+	app.all('/api*', keystone.middleware.api);
+	app.all('/api/me/task', routes.api.me.task);
+	app.all('/api/task/:id', routes.api.task);
+	app.all('/api/app/rsvp', routes.api.app.rsvp);
+	
+	//document
+	app.get('/api/document/list', routes.api.document.list);
+	app.get('/api/document/:slug', routes.api.document.get);
+    
 	//angbootm
-     app.get('/api/post/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.list);
-	 app.all('/api/post/create', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.create);
-	 app.get('/api/post/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.get);
-	 app.all('/api/post/:id/update', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.update);
-	 app.get('/api/post/:id/remove', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.remove);
+    app.get('/api/post/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.list);
+	app.all('/api/post/create', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.create);
+	app.get('/api/post/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.get);
+	app.all('/api/post/:id/update', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.update);
+	app.get('/api/post/:id/remove', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.remove);
 
-	 app.get('/api/post-category/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.post_categories.list);
-     app.get('/api/post-category/:key', [keystone.middleware.api, keystone.middleware.cors], routes.api.post_categories.get);
-	 app.get('/api/post-by-category/:key', [keystone.middleware.api, keystone.middleware.cors], routes.api.post_by_category.list);
-
+	app.get('/api/post-category/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.post_categories.list);
+    app.get('/api/post-category/:key', [keystone.middleware.api, keystone.middleware.cors], routes.api.post_categories.get);
+	app.get('/api/post-by-category/:key', [keystone.middleware.api, keystone.middleware.cors], routes.api.post_by_category.list);
 
     // App Routes for Angular Bootstrap Material Project
 	app.get('/ang_bootm', [keystone.middleware.api, keystone.middleware.cors], routes.ang_bootm.app);
@@ -73,4 +84,5 @@ exports = module.exports = function (app) {
 	app.get('/ang_bootm/post', [keystone.middleware.api, keystone.middleware.cors], routes.ang_bootm.post);
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
+
 };
