@@ -4,7 +4,7 @@ angular.module('teamlink_post', [])
  
 
  PostService.getTitle({slug: $routeParams.slug}).then(function(data) {
-        $scope.title = data;
+        $scope.postList = data;
    });
 }]);
 

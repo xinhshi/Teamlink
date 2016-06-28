@@ -8,11 +8,11 @@
                         <img class="media-object" src="http://placehold.it/80x80"/>
                     </a>
                 </div>
-                <div class="media-body">
+                <div class="media-body" ng-repeat="post in postList">
                     <h3 class="media-heading">
-                        <a href="/blog/post/team-meeting-minutes-on-6172017">{{title}}</a>
+                        <a href="/blog/post/team-meeting-minutes-on-6172017">{{postctrl.post.title}}</a>
                     </h3>
-                    <p class="lead text-muted">Posted by {{postctrl.post.author}}</p>
+                    <p class="lead text-muted">Posted by {{post.author.name.first}}</p>
                     <p/>
                 </div>
             </div>
