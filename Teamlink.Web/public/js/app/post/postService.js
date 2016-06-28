@@ -2,24 +2,46 @@
 
 angular.module('postServices', ['ngResource'])
 
-.factory('PostService', ['$resource', function($resource){
-    return $resource('http://localhost:3000/' + 'api/post/list', {}, {
-      'query': {method:'GET', isArray:true}
-    });
+.factory('PostService', ['$http', function($http){
+    var service = {};
+    var host= 'http://localhost:3000/';
+    
+
+    service.getTitle = function() {
+        return $http.get(host + 'api/post/list').then(function(response) {
+            return response.data;
+        });
+    }
+
+    return service;
 }])
 
+.factory('PostCategory', ['$http', function($http){
+    var service = {};
+    var host= 'http://localhost:3000/';
+    
 
-.factory('PostCategory', ['$resource',
-  function($resource){
-    return $resource('http://localhost:3000/' + 'api/post-category/:key', {}, {
-      'query': {method:'GET', params:{key:'list'}, isArray:true}
-    });
-  }])
+    service.getCategory = function() {
+        return $http.get(host + 'api/post-category/:key').then(function(response) {
+            return response.data;
+        });
+    }
 
-.factory('PostByCategory', ['$resource',
-  function($resource){
-    return $resource('http://localhost:3000/' + 'api/post-by-category/:key', {}, {
-      'query': {method:'GET', isArray:true}
-    });
-  }])
+    return service;
+}])
+
+.factory('PostByCategory', ['$http', function($http){
+    var service = {};
+    var host= 'http://localhost:3000/';
+    
+
+    service.getPostCategory = function() {
+        return $http.get(host + 'api/post-by-category/:key').then(function(response) {
+            return response.data;
+        });
+    }
+
+    return service;
+}]);
+
 

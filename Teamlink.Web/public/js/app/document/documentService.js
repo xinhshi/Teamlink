@@ -4,9 +4,6 @@ angular.module('teamlink_document_service', ['ngResource'])
     var service = {};
     var host= 'http://localhost:3000/';
     
-    service.multiply = function(a, b) {
-       return a * b
-    }
 
     service.getDocList = function() {
         return $http.get(host + 'api/post/list').then(function(response) {
