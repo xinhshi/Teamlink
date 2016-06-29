@@ -43,7 +43,7 @@
              <div class="blog" ng-repeat="post in blogList">
   
               <div class="post media" ></div>
-              <div class="media-left"><a href=""><img src="{{  }}"  class="media-object"/></a></div>
+              <div class="media-left"><a href=""><img ng-src="{{post.image.url}}" width="80" height="80"  class="media-object"/></a></div>
               <div class="media-body">
                 <h3 class="media-heading"><a href="/app#/post/{{post.slug}}">{{post.title}}</a></h3>
                 <p class="lead text-muted">Posted on {{post.publishedDate | date:'longDate'}} <span ng-show="post.categories.length">in {{post.categories.length}}</span> by {{post.author.name.first}}</p>

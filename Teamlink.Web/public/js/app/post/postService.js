@@ -36,8 +36,15 @@ angular.module('postServices', ['ngResource'])
         });
     }
 
+    service.getCommentList = function() {
+        return $http.get(host + 'api/comment/list' ).then(function(response) {
+            return response.data;
+        });
+    }
+
     return service;
 }])
+
 
 .factory('PostCategory', ['$http', function($http){
     var service = {};

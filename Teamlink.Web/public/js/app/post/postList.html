@@ -58,12 +58,11 @@
                     </div>
                   </form>
                   <div id="comment-id-576349e817d5a9cb4974a727" style="margin-top: 20px;">
-                    <div class="media">
-                      <div class="pull-left"><img src=" " alt="Sally Shi" width="80" height="80" class="img-rounded"/></div>
+                    <div class="media" ng-repeat="comment in commentList">
+                      <div class="pull-left"><img ng-src="{{comment.author.photo.url}}" alt="Profile" width="80" height="80" class="img-rounded"/></div>
                       <div class="media-body">
-                        <p><strong>{{  }}</strong>
-                        </p>
-                        <p>kl {{ kl }}</p>
+                        <p><strong>{{comment.author.name.first}}</strong></p>
+                        <p>{{comment.content}}</p>
                       </div>
                     </div>
                   </div>

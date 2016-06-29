@@ -7,6 +7,9 @@ angular.module('teamlink_post', [])
         $scope.post = data;
    });
 
+ PostService.getCommentList().then(function(data) {
+        $scope.commentList = data;
+   });
 
 }]);
 
