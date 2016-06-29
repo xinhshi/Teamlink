@@ -66,6 +66,10 @@ exports = module.exports = function (app) {
 	//document
 	app.get('/api/document/list', routes.api.document.list);
 	app.get('/api/document/:slug', routes.api.document.get);
+
+	//comment
+	app.get('/api/comment/list', routes.api.comments.list);
+	app.get('/api/comment/:post', routes.api.comments.get);
     
 	//angbootm
     app.get('/api/post/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.list);
