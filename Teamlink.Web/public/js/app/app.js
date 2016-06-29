@@ -8,13 +8,17 @@ app.config(
     }).when('/blog', {
 		  templateUrl: 'js/app/blog/blogList.html',
 		  controller: 'BlogController'
-    }).when('/post/:slug', {
+    }).when('/post/:postId', {
 		  templateUrl: 'js/app/post/postList.html',
 		  controller: 'PostController'
     }).when('/document', {
 		  templateUrl: 'js/app/document/documentList.html',
 		  controller: 'DocumentController'
-    }).otherwise({
+    }).when('/task', {
+		  templateUrl: 'js/app/task/taskList.html',
+		  controller: 'TaskController'
+    })
+	.otherwise({
 		  redirectTo: '/home'
     });
 });

@@ -1,11 +1,13 @@
 angular.module('teamlink_post', [])
 
-.controller('PostController', ['$routeParams', '$location', '$scope', 'PostService', function($routeParams, $location, $scope, PostService) {
+.controller('PostController', ['$routeParams', '$location', '$scope', 'PostService', 'PostCategory', function($routeParams, $location, $scope, PostService, PostCategory) {
  
 
- PostService.getTitle({slug: $routeParams.slug}).then(function(data) {
-        $scope.postList = data;
+ PostService.getDetail($routeParams.postId).then(function(data) {
+        $scope.post = data;
    });
+
+
 }]);
 
 
