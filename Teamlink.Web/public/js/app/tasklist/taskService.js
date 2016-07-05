@@ -12,15 +12,18 @@ angular.module('taskServices', ['ngResource'])
         });
     }
 
-//    service.getDetail = function(taskId) {
-//        return $http.get(host + 'api/task/' + taskId).then(function(response) {
-//            return response.data;
-//        });
-//    }
+    service.getDetail = function(taskId) {
+        return $http.get(host + 'api/task/' + taskId).then(function(response) {
+            return response.data;
+        });
+    }
 
+    service.getCommentList = function() {
+        return $http.get(host + 'api/taskcomment/list' ).then(function(response) {
+            return response.data;
+        });
+    }
 
     return service;
 }])
-
-
 

@@ -1,4 +1,4 @@
-var app = angular.module('teamlink', ['ngRoute', 'teamlink_home', 'teamlink_blog', 'teamlink_document', 'teamlink_document_service', 'teamlink_post', 'postServices','teamlink_task', 'taskServices']);
+var app = angular.module('teamlink', ['ngRoute', 'teamlink_home', 'teamlink_document', 'teamlink_document_service', 'teamlink_blog', 'teamlink_post', 'postServices','teamlink_tasklist', 'teamlink_task', 'taskServices']);
 
 app.config(
   function($routeProvider) {

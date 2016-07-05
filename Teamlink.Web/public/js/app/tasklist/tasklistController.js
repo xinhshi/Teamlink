@@ -1,4 +1,4 @@
-angular.module('teamlink_task', [])
+angular.module('teamlink_tasklist', [])
 
 .controller('TasklistController', ['$routeParams', '$location', '$scope', 'TaskService', function($routeParams, $location, $scope, TaskService) {
  

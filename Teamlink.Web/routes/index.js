@@ -63,7 +63,12 @@ exports = module.exports = function (app) {
 	//app.all('/api/app/rsvp', routes.api.app.rsvp);
 	
     app.get('/api/task/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.task.list);
-	app.get('/api/task/:id', [keystone.middleware.api, keystone.middleware.cors], routes.api.task.get);
+	app.get('/api/task/:_id', [keystone.middleware.api, keystone.middleware.cors], routes.api.task.get);
+
+	//task comment
+	app.get('/api/taskcomment/list', routes.api.taskcomment.list);
+	app.get('/api/taskcomment/:_id', routes.api.taskcomment.get);
+
 
 	//document
     app.get('/api/document/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.document.list);
