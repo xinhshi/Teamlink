@@ -1,4 +1,4 @@
-var app = angular.module('teamlink', ['ngRoute', 'teamlink_home', 'teamlink_blog', 'teamlink_document', 'teamlink_document_service', 'teamlink_post', 'postServices']);
+var app = angular.module('teamlink', ['ngRoute', 'teamlink_home', 'teamlink_blog', 'teamlink_document', 'teamlink_document_service', 'teamlink_post', 'postServices','teamlink_task', 'taskServices']);
 
 app.config(
   function($routeProvider) {
@@ -14,8 +14,11 @@ app.config(
     }).when('/document', {
 		  templateUrl: 'js/app/document/documentList.html',
 		  controller: 'DocumentController'
-    }).when('/task', {
-		  templateUrl: 'js/app/task/taskList.html',
+    }).when('/tasks', {
+		  templateUrl: 'js/app/tasklist/taskList.html',
+		  controller: 'TasklistController'
+    }).when('/task/:taskId', {
+		  templateUrl: 'js/app/task/task.html',
 		  controller: 'TaskController'
     })
 	.otherwise({

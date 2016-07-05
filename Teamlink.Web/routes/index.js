@@ -52,19 +52,21 @@ exports = module.exports = function (app) {
     app.get('/app', function(req,res){
     	res.sendFile(path.join(__dirname,'../templates/views','app.html'));
 	});
-
-    app.get('/api/document/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.document.list);
 	
 	app.get('/tasks', routes.views.tasks);
 	app.get('/tasks/:task', routes.views.task);
+	
 	// Task API
 	app.all('/api*', keystone.middleware.api);
-	app.all('/api/me/task', routes.api.me.task);
-	app.all('/api/task/:id', routes.api.task);
-	app.all('/api/app/rsvp', routes.api.app.rsvp);
+	//app.all('/api/me/task', routes.api.me.task);
+	//app.all('/api/task/:id', routes.api.task);
+	//app.all('/api/app/rsvp', routes.api.app.rsvp);
 	
+    app.get('/api/task/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.task.list);
+	app.get('/api/task/:id', [keystone.middleware.api, keystone.middleware.cors], routes.api.task.get);
+
 	//document
-	app.get('/api/document/list', routes.api.document.list);
+    app.get('/api/document/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.document.list);
 	app.get('/api/document/:slug', routes.api.document.get);
 
 	//comment

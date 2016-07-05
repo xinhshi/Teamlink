@@ -21,7 +21,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/app#/blog">BBS</a></li>
                 <li><a href="/app">App</a></li>
-                <li class="active"><a href="#task">Task</a></li>
+                <li class="active"><a href="#tasks">Task</a></li>
                 <li><a href="#document">Document</a></li>
 
               </ul>
@@ -49,25 +49,30 @@
             <div class="meetup-content">
               <h2 class="mv-5">active1</h2>
               <h5 class="mb-1">Tuesday 21 Jun 2016 12:57pm - Friday 24 Jun 2016 12:57pm</h5>
-              <p><p>2016-06-24</p></p>
+              <p>2016-06-24</p>
+              <p>Showing {{value}} tasks.</p>
             </div>
           </div>
         </div>
       </div>
       <div class="container">
         <div class="row">
-          <div class="timeline">
+          <div class="timeline" ng-repeat="task in taskList | orderBy: '-startDate'">
             <div class="timeline-path"></div>
             <div class="timeline-item--offset"></div>
-            <div class="timeline-item timeline-item--odd">
-              <div class="timeline-item-node"></div><a href="/tasks/schedule1" class="timeline-item-inner">
-                <h6 class="text-caps text-danger">2016 - July </h6>
-                <h4>schedule1</h4>2016-07-23</a>
-            </div>
-            <div class="timeline-item timeline-item--even">
-              <div class="timeline-item-node"></div><a href="/tasks/5" class="timeline-item-inner">
-                <h6 class="text-caps text-danger">2016 - June </h6>
-                <h4>5</h4></a>
+            <div class="timeline-item timeline-item--odd"  ng-if="$even">
+              <div class="timeline-item-node"></div><a href="/app#/task/{{task._id}}" class="timeline-item-inner">
+                <h6 class="text-caps text-danger">{{task.startDate | date:'y - MMMM d'}} </h6>
+                <h4>{{task.name}} </h4>
+                <h5>{{task.description}}</h5>
+                {{task.endDate | date:'longDate'}}</a>
+            </div>    
+            <div class="timeline-item timeline-item--even"  ng-if="$odd">
+              <div class="timeline-item-node"></div><a href="/app#/task/{{task._id}}" class="timeline-item-inner">
+                <h6 class="text-caps text-danger">{{task.startDate | date:'y - MMMM d'}} </h6>
+                <h4>{{task.name}} </h4>
+                <h5>{{task.description}}</h5>
+                {{task.endDate | date:'longDate'}}</a>
             </div>
             
           </div>
