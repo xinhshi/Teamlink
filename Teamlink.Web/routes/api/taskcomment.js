@@ -24,7 +24,7 @@ exports.list = function(req, res) {
  * Get Comment by Post
  */
 exports.get = function(req, res) {
-  TaskComment.model.find().populate('author categories').where('post', req.params.post).exec(function(err, item) {
+  TaskComment.model.find().populate('author categories').where('_id', req.params._id).exec(function(err, item) {
     
     if (err) return res.apiError('database error', err);
     if (!item) return res.apiError('not found');
