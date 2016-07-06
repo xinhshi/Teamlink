@@ -57,7 +57,7 @@
             <div class="lead text-muted" >Categories</div>
             <ul class="nav nav-pills nav-stacked" >
               <li class="active" ><a href="/app#/blog">All</a></li>
-              <li role="presentation" ng-repeat="category in categoryList" ><a href="">{{category.name}}<span class="badge pull-right">{{postCount}}</span></a></li>
+              <li role="presentation"  ng-click="refreshPosts()", ng-repeat="category in categoryList" ><a href="">{{category.name}}<span class="badge pull-right">{{postCount}}</span></a></li>
             </ul>
 
           </div>

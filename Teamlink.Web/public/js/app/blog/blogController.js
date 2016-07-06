@@ -17,7 +17,7 @@ angular.module('teamlink_blog', [])
 
  PostCategory.getPostCategory({slug: $routeParams.slug}).then(function(data) {
       
-        $scope.postcount = data.length;
+        $scope.postCount = data.length;
 
    });
 
@@ -25,6 +25,13 @@ angular.module('teamlink_blog', [])
 {
     return $sce.trustAsHtml(html_code);
 };
+
+
+$scope.refreshPosts = function() {
+   location.reload(); 
+  };
+
+
 
 }]);
 
