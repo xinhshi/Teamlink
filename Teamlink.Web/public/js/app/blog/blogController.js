@@ -12,7 +12,12 @@ angular.module('teamlink_blog', [])
  PostCategory.getCategoryList({slug: $routeParams.slug}).then(function(data) {
       
         $scope.categoryList = data;
-        $scope.catvalue = data.length;
+
+   });
+
+ PostCategory.getPostCategory({slug: $routeParams.slug}).then(function(data) {
+      
+        $scope.postcount = data.length;
 
    });
 

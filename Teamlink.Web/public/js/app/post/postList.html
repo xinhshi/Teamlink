@@ -42,7 +42,7 @@
               <hr>
               <header>
                 <h1>{{post.title}}</h1>
-                <h5>Posted on {{post.publishedDate | date:'longDate'}} <span ng-show="post.categories.length">in <a href="">{{post.categories}}</a> </span> by {{post.author.name.first}}</h5>
+                <h5>Posted on {{post.publishedDate | date:'longDate'}} <span ng-show="post.categories.key.length">in <a href="">{{post.categories.name}}</a> </span> by {{post.author.name.first}}</h5>
               </header>
               <div class="post">
                 <p ng-bind-html="renderHtml(post.content.extended)"></p>
