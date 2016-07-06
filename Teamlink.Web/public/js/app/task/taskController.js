@@ -9,6 +9,10 @@ angular.module('teamlink_task', [])
  
   TaskService.getCommentList().then(function(data) {
         $scope.commentList = data;
+   })
+
+  TaskService.getParticipant($routeParams.taskId).then(function(data) {
+        $scope.participantNumber = data.length;
    });
 
 }]);

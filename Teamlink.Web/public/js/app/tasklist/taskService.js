@@ -23,6 +23,12 @@ angular.module('taskServices', ['ngResource'])
             return response.data;
         });
     }
+   
+   service.getParticipant = function(taskId) {
+        return $http.get(host + 'api/rsvp/' + taskId).then(function(response) {
+            return response.data;
+        });
+    }
 
     return service;
 }])
