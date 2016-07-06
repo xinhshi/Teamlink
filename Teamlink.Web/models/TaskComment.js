@@ -23,20 +23,22 @@ TaskComment.add({
 	link: { type: Types.Url }
 });
 
-TaskComment.schema.set('toJSON', {
-	virtuals: true,
-	transform: function(doc, rtn, options) {
-		rtn = _.pick(rtn, '_id', 'name', 'place', 'map', 'description', 'link');
-		if (doc.who) {
-			rtn.who = doc.who.map(function(i) {
-				return {
-					name: i.name,
-					twitter: i.twitter,
-					avatarUrl: i.avatarUrl
-				}
-			});
-		}
-		return rtn;
+TaskComment.schema.pre('save', function (next) {
+	this.wasNew = this.isNew;
+	if (!this.isModified('publishedOn') && this.isModified('commentState') && this.commentState === 'published') {
+		this.publishedOn = new Date();
+	}
+	next();
+});
+
+TaskComment.schema.post('save', function () {
+	if (!this.wasNew) return;
+	if (this.author) {
+		keystone.list('User').model.findById(this.author).exec(function (err, user) {
+			if (user) {
+				user.wasActive().save();
+			}
+		});
 	}
 });
 

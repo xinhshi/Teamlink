@@ -4,7 +4,7 @@ angular.module('teamlink_task', [])
  
 
  TaskService.getDetail($routeParams.taskId).then(function(data) {
-        $scope.post = data;
+        $scope.task = data;
    })
  
   TaskService.getCommentList().then(function(data) {

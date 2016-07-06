@@ -58,7 +58,7 @@ exports = module.exports = function (app) {
 	
 	// Task API
 	app.all('/api*', keystone.middleware.api);
-	app.all('/api/me/task', routes.api.me.task);
+	//app.all('/api/me/task', routes.api.me.task);
 	//app.all('/api/task/:id', routes.api.task);
 	//app.all('/api/app/rsvp', routes.api.app.rsvp);
     //app.all('/api/app/status', routes.api.app.status);
@@ -67,7 +67,7 @@ exports = module.exports = function (app) {
 	app.get('/api/task/:_id', [keystone.middleware.api, keystone.middleware.cors], routes.api.task.get);
 	app.all('/api/rsvp/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.rsvp.list);
     app.all('/api/rsvp/:task', [keystone.middleware.api, keystone.middleware.cors], routes.api.rsvp.get);
-	app.all('/api/stats/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.stats);
+	//app.all('/api/stats/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.stats);
 
 
 	//task comment

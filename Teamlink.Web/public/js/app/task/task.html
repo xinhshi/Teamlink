@@ -39,28 +39,28 @@
           <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"><a href="#tasks">&larr; Back to all tasks</a>
             <div class="tile ph-1 pv-1">
               <div class="meetup-calendar calendar hidden-xs hidden-sm">
-                <div class="calendar__header">{{post.endDate| date:'MMMM'}}</div>
+                <div class="calendar__header">{{task.endDate| date:'MMMM'}}</div>
                 <div class="calendar__body">
-                  <div class="calendar__date">{{post.endDate| date:'d'}}</div>
-                  <div class="calendar__year">{{post.endDate| date:'y'}}</div>
+                  <div class="calendar__date">{{task.endDate| date:'d'}}</div>
+                  <div class="calendar__year">{{task.endDate| date:'y'}}</div>
                 </div>
               </div>
               <div class="meetup-content">
-                <h2 class="mv-5">{{post.name}}</h2>
-                <h5 class="mb-1">{{post.startDate| date:'EEEE d MMMM y h:mm a'}} - {{post.endDate| date:'EEEE d MMMM y h:mm a'}}</h5>
-                <p>{{post.description}}</p>
+                <h2 class="mv-5">{{task.name}}</h2>
+                <h5 class="mb-1">{{task.startDate| date:'EEEE d MMMM y h:mm a'}} - {{task.endDate| date:'EEEE d MMMM y h:mm a'}}</h5>
+                <p>{{task.description}}</p>
                 <hr class="mv-2"/>
                 <ul class="task-taskcomments">
               
-                  <div class="row talk" ng-repeat="comment in commentList">
+                  <div class="row talk" ng-show="comment.task == task._id" ng-repeat="comment in commentList">
                     <div class="col-xs-3 col-sm-2">
-                      <div class="talk__speakers"><img src="http://res.cloudinary.com/keystone-demo/image/upload/c_thumb,f_auto,g_faces,h_320,w_320/v1466067515/z02nkmtxzzm0gx1kmjmk.jpg" width="160" height="160" alt="Sally Shi" class="talk__photo"/>
+                      <div class="talk__speakers"><img src=" " width="160" height="160" alt="User" class="talk__photo"/>
                       </div>
                     </div>
                     <div class="col-xs-9 col-sm-10">
                       <div class="talk-summary">
                         <h4 class="title">{{comment.name}} </h4>
-                        <p class="subtitle mb-1">by {{}}</p>
+                        <p class="subtitle mb-1">by {{comment.who}}</p>
                         <p>{{comment.description}}</p>
                       </div>
                     </div>
