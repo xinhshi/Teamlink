@@ -54,13 +54,13 @@
               
                   <div class="row talk" ng-show="comment.task == task._id" ng-repeat="comment in commentList">
                     <div class="col-xs-3 col-sm-2">
-                      <div class="talk__speakers"><img src=" " width="160" height="160" alt="User" class="talk__photo"/>
+                      <div class="talk__speakers"><img ng-src="{{comment.author.photo.url}}" width="160" height="160" alt="User" class="talk__photo"/>
                       </div>
                     </div>
                     <div class="col-xs-9 col-sm-10">
                       <div class="talk-summary">
                         <h4 class="title">{{comment.name}} </h4>
-                        <p class="subtitle mb-1">by {{comment.who}}</p>
+                        <p class="subtitle mb-1">by {{comment.author.name.first}}</p>
                         <p>{{comment.description}}</p>
                       </div>
                     </div>
