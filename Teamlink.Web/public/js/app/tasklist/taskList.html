@@ -36,23 +36,22 @@
     <div id="body">
       <div class="container">
         <div class="jumbotron">
-          <p class="lead">We usually meet up on Monday of every week. We hope to see you at <a href="/join" class="js-auth-trigger">our&nbsp;next&nbsp;task</a>. Stay in the loop - <a href="http://www.sydjs.com/meetups" target="_blank">see the demo</a>
-          </p>
-          <div class="tile ph-1 pv-1">
+          <div class="lead text-muted" >We usually meet up on Monday of every week.</div>
+          <div class="tile ph-1 pv-1" ng-repeat="task in taskList | orderBy: 'endDate' | limitTo: 1">
             <div class="meetup-calendar calendar hidden-xs hidden-sm">
-              <div class="calendar__header">Jun</div>
+              <div class="calendar__header">{{task.endDate| date:'MMMM'}}</div>
               <div class="calendar__body">
-                <div class="calendar__date">21</div>
-                <div class="calendar__year">2016</div>
+                <div class="calendar__date">{{task.endDate| date:'d'}}</div>
+                <div class="calendar__year">{{task.endDate| date:'y'}}</div>
               </div>
             </div>
             <div class="meetup-content">
-              <h2 class="mv-5">active1</h2>
-              <h5 class="mb-1">Tuesday 21 Jun 2016 12:57pm - Friday 24 Jun 2016 12:57pm</h5>
-              <p>2016-06-24</p>
-              <p>Showing {{value}} tasks.</p>
+              <h2 class="mv-5">{{task.name}}</h2>
+              <h5 class="mb-1">{{task.startDate| date:'EEEE d MMMM y h:mm a'}} - {{task.endDate| date:'EEEE d MMMM y h:mm a'}}</h5>
+              <p ng-bind-html="renderHtml(task.description)"></p>
             </div>
-          </div>
+          </div> <br>
+              <div class="lead text-muted" >Showing {{value}} tasks.</div>
         </div>
       </div>
       <div class="container">
