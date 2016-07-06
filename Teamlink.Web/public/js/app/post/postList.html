@@ -44,7 +44,8 @@
                 <h1>{{post.title}}</h1>
                 <h5>Posted on {{post.publishedDate | date:'longDate'}} <span ng-show="post.categories.length">in <a href="">{{post.categories}}</a> </span> by {{post.author.name.first}}</h5>
               </header>
-              <div class="post"><p>{{post.content.extended}} </p>
+              <div class="post">
+                <p ng-bind-html="renderHtml(post.content.extended)"></p>
                 <div>
                   <form method="post" style="margin-bottom: 40px; margin-top: 40px;">
                     <input type="hidden" name="action" value="comment.create"/>
@@ -62,7 +63,7 @@
                       <div class="pull-left"><img ng-src="{{comment.author.photo.url}}" alt="Profile" width="80" height="80" class="img-rounded"/></div>
                       <div class="media-body">
                         <p><strong>{{comment.author.name.first}}</strong></p>
-                        <p>{{comment.content}}</p>
+                        <p ng-bind-html="renderHtml(comment.content)"></p>
                       </div>
                     </div>
                   </div>

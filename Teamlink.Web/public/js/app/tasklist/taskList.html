@@ -64,14 +64,14 @@
               <div class="timeline-item-node"></div><a href="/app#/task/{{task._id}}" class="timeline-item-inner">
                 <h6 class="text-caps text-danger">{{task.startDate | date:'y - MMMM d'}} </h6>
                 <h4>{{task.name}} </h4>
-                <h5>{{task.description}}</h5>
+                <h5 ng-bind-html="renderHtml(task.description)"></h5>
                 {{task.endDate | date:'longDate'}}</a>
             </div>    
             <div class="timeline-item timeline-item--even"  ng-if="$odd">
               <div class="timeline-item-node"></div><a href="/app#/task/{{task._id}}" class="timeline-item-inner">
                 <h6 class="text-caps text-danger">{{task.startDate | date:'y - MMMM d'}} </h6>
                 <h4>{{task.name}} </h4>
-                <h5>{{task.description}}</h5>
+                <h5 ng-bind-html="renderHtml(task.description)"></h5>
                 {{task.endDate | date:'longDate'}}</a>
             </div>
             

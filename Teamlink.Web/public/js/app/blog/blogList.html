@@ -47,7 +47,7 @@
               <div class="media-body">
                 <h3 class="media-heading"><a href="/app#/post/{{post.slug}}">{{post.title}}</a></h3>
                 <p class="lead text-muted">Posted on {{post.publishedDate | date:'longDate'}} <span ng-show="post.categories.length">in {{post.categories.length}}</span> by {{post.author.name.first}}</p>
-                <p>{{post.content.brief}}</p>
+                <p ng-bind-html="renderHtml(post.content.brief)"></p>
                 <p class="read-more"><a href="/app#/post/{{post.slug}}">Read more...</a></p>
               </div>
 

@@ -1,6 +1,6 @@
 angular.module('teamlink_post', [])
 
-.controller('PostController', ['$routeParams', '$location', '$scope', 'PostService', 'PostCategory', function($routeParams, $location, $scope, PostService, PostCategory) {
+.controller('PostController', ['$routeParams', '$location', '$scope', '$sce', 'PostService', 'PostCategory', function($routeParams, $location, $scope, $sce, PostService, PostCategory) {
  
 
  PostService.getDetail($routeParams.postId).then(function(data) {
@@ -10,6 +10,11 @@ angular.module('teamlink_post', [])
  PostService.getCommentList().then(function(data) {
         $scope.commentList = data;
    });
+
+    $scope.renderHtml = function(html_code)
+{
+    return $sce.trustAsHtml(html_code);
+};
 
 }]);
 

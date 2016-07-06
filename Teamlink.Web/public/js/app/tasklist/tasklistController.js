@@ -1,6 +1,6 @@
 angular.module('teamlink_tasklist', [])
 
-.controller('TasklistController', ['$routeParams', '$location', '$scope', 'TaskService', function($routeParams, $location, $scope, TaskService) {
+.controller('TasklistController', ['$routeParams', '$location', '$scope','$sce' , 'TaskService', function($routeParams, $location, $scope, $sce, TaskService) {
  
 
  TaskService.getList().then(function(data) {
@@ -9,6 +9,10 @@ angular.module('teamlink_tasklist', [])
 
    });
 
+$scope.renderHtml = function(html_code)
+{
+    return $sce.trustAsHtml(html_code);
+};
 
 }]);
 

@@ -48,7 +48,7 @@
               <div class="meetup-content">
                 <h2 class="mv-5">{{task.name}}</h2>
                 <h5 class="mb-1">{{task.startDate| date:'EEEE d MMMM y h:mm a'}} - {{task.endDate| date:'EEEE d MMMM y h:mm a'}}</h5>
-                <p>{{task.description}}</p>
+                <p ng-bind-html="renderHtml(task.description)"></p>
                 <hr class="mv-2"/>
                 <ul class="task-taskcomments">
               
@@ -61,7 +61,7 @@
                       <div class="talk-summary">
                         <h4 class="title">{{comment.name}} </h4>
                         <p class="subtitle mb-1">by {{comment.author.name.first}}</p>
-                        <p>{{comment.description}}</p>
+                        <p ng-bind-html="renderHtml(comment.description)"></p>
                       </div>
                     </div>
                   </div>
