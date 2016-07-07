@@ -25,14 +25,6 @@ $scope.refreshPosts = function() {
    location.reload(); 
   };
 
-//  PostService.getDetail($routeParams.postId).then(function(data) {
-//         $scope.post = data;
-//    });
-
-//  PostService.getCommentList().then(function(data) {
-//         $scope.commentList = data;
-//    });
-
 }])
 
 .controller('PostDetailController', ['$routeParams', '$location', '$scope', '$sce', 'PostService', 'PostCategory', function($routeParams, $location, $scope, $sce, PostService, PostCategory) {
@@ -50,5 +42,9 @@ $scope.refreshPosts = function() {
 PostService.getDetail($routeParams.postId).then(function(data) {
         $scope.post = data;
 });
+
+  PostService.getCommentList().then(function(data) {
+         $scope.commentList = data;
+    });
 
 }])

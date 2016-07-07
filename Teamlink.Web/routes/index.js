@@ -58,8 +58,8 @@ exports = module.exports = function (app) {
 
 
 	//task comment
-	app.get('/api/taskcomment/list', routes.api.taskcomment.list);
-	app.get('/api/taskcomment/:_id', routes.api.taskcomment.get);
+	app.get('/api/taskcomment/list',[keystone.middleware.api, keystone.middleware.cors], routes.api.taskcomment.list);
+	app.get('/api/taskcomment/:_id',[keystone.middleware.api, keystone.middleware.cors], routes.api.taskcomment.get);
 
 
 	//document
@@ -67,8 +67,8 @@ exports = module.exports = function (app) {
 	app.get('/api/document/:slug', routes.api.document.get);
 
 	//comment
-	app.get('/api/comment/list', routes.api.comments.list);
-	app.get('/api/comment/:post', routes.api.comments.get);
+	app.get('/api/comment/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.comments.list);
+	app.get('/api/comment/:post', [keystone.middleware.api, keystone.middleware.cors], routes.api.comments.get);
     
 	//angbootm
     app.get('/api/post/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.list);
