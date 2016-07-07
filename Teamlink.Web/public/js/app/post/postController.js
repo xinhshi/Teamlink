@@ -2,24 +2,53 @@ angular.module('teamlink_post', [])
 
 .controller('PostController', ['$routeParams', '$location', '$scope', '$sce', 'PostService', 'PostCategory', function($routeParams, $location, $scope, $sce, PostService, PostCategory) {
  
+PostService.getList({slug: $routeParams.slug}).then(function(data) {
+    $scope.postList = data;
+    $scope.value = data.length;
+})
 
- PostService.getDetail($routeParams.postId).then(function(data) {
-        $scope.post = data;
-   });
+PostCategory.getCategoryList({slug: $routeParams.slug}).then(function(data) {
+    $scope.categoryList = data;
+});
 
- PostService.getCommentList().then(function(data) {
-        $scope.commentList = data;
-   });
+//  PostCategory.getPostCategory({slug: $routeParams.slug}).then(function(data) {
+//     $scope.postCount = data.length;
+// });
 
-    $scope.renderHtml = function(html_code)
+$scope.renderHtml = function(html_code)
 {
     return $sce.trustAsHtml(html_code);
 };
 
-}]);
+
+$scope.refreshPosts = function() {
+   location.reload(); 
+  };
+
+//  PostService.getDetail($routeParams.postId).then(function(data) {
+//         $scope.post = data;
+//    });
+
+//  PostService.getCommentList().then(function(data) {
+//         $scope.commentList = data;
+//    });
+
+}])
+
+.controller('PostDetailController', ['$routeParams', '$location', '$scope', '$sce', 'PostService', 'PostCategory', function($routeParams, $location, $scope, $sce, PostService, PostCategory) {
+
+$scope.renderHtml = function(html_code)
+{
+    return $sce.trustAsHtml(html_code);
+};
 
 
+$scope.refreshPosts = function() {
+   location.reload(); 
+};
 
+PostService.getDetail($routeParams.postId).then(function(data) {
+        $scope.post = data;
+});
 
-
-
+}])
