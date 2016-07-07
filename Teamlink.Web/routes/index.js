@@ -49,28 +49,7 @@ exports = module.exports = function (app) {
     	res.sendFile(path.join(__dirname, '../templates/views','app.html'));
 	});
 	
-	// Task API
-	app.get('/api/task/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.task.list);
-	app.get('/api/task/:_id', [keystone.middleware.api, keystone.middleware.cors], routes.api.task.get);
-	app.all('/api/rsvp/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.rsvp.list);
-    app.all('/api/rsvp/:task', [keystone.middleware.api, keystone.middleware.cors], routes.api.rsvp.get);
-	//app.all('/api/stats/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.stats);
-
-
-	//task comment
-	app.get('/api/taskcomment/list', routes.api.taskcomment.list);
-	app.get('/api/taskcomment/:_id', routes.api.taskcomment.get);
-
-
-	//document
-    app.get('/api/document/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.document.list);
-	app.get('/api/document/:slug', routes.api.document.get);
-
-	//comment
-	app.get('/api/comment/list', routes.api.comments.list);
-	app.get('/api/comment/:post', routes.api.comments.get);
-    
-	//angbootm
+	// API - post
     app.get('/api/post/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.list);
 	app.all('/api/post/create', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.create);
 	app.get('/api/post/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.get);
@@ -81,8 +60,19 @@ exports = module.exports = function (app) {
     app.get('/api/post-category/:key', [keystone.middleware.api, keystone.middleware.cors], routes.api.post_categories.get);
 	app.get('/api/post-by-category/:key', [keystone.middleware.api, keystone.middleware.cors], routes.api.post_by_category.list);
 
-    // App Routes for Angular Bootstrap Material Project
-	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
-	// app.get('/protected', middleware.requireUser, routes.views.protected);
+	app.get('/api/comment/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.comments.list);
+	app.get('/api/comment/:post', [keystone.middleware.api, keystone.middleware.cors], routes.api.comments.get);
 
+	// API - task
+	app.get('/api/task/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.task.list);
+	app.get('/api/task/:_id', [keystone.middleware.api, keystone.middleware.cors], routes.api.task.get);
+	app.all('/api/rsvp/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.rsvp.list);
+    app.all('/api/rsvp/:task', [keystone.middleware.api, keystone.middleware.cors], routes.api.rsvp.get);
+	
+	app.get('/api/taskcomment/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.taskcomment.list);
+	app.get('/api/taskcomment/:_id', [keystone.middleware.api, keystone.middleware.cors], routes.api.taskcomment.get);
+
+	// API - document
+    app.get('/api/document/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.document.list);
+	app.get('/api/document/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.document.get);
 };

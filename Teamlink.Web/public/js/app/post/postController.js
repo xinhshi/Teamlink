@@ -11,27 +11,18 @@ PostCategory.getCategoryList({slug: $routeParams.slug}).then(function(data) {
     $scope.categoryList = data;
 });
 
-//  PostCategory.getPostCategory({slug: $routeParams.slug}).then(function(data) {
-//     $scope.postCount = data.length;
-// });
+PostCategory.getPostCategory({slug: $routeParams.slug}).then(function(data) {
+    $scope.postCount = data.length;
+});
 
 $scope.renderHtml = function(html_code)
 {
     return $sce.trustAsHtml(html_code);
 };
 
-
 $scope.refreshPosts = function() {
-   location.reload(); 
-  };
-
-//  PostService.getDetail($routeParams.postId).then(function(data) {
-//         $scope.post = data;
-//    });
-
-//  PostService.getCommentList().then(function(data) {
-//         $scope.commentList = data;
-//    });
+    location.reload(); 
+};
 
 }])
 
@@ -44,11 +35,15 @@ $scope.renderHtml = function(html_code)
 
 
 $scope.refreshPosts = function() {
-   location.reload(); 
+	location.reload(); 
 };
 
 PostService.getDetail($routeParams.postId).then(function(data) {
-        $scope.post = data;
+    $scope.post = data;
+});
+
+PostService.getCommentList().then(function(data) {
+    $scope.commentList = data;
 });
 
 }])
