@@ -87,29 +87,29 @@ keystone.set('nav', {
 // Start Keystone to connect to your database and initialise the web server
 
 //cloudcmd
-var http        = require('http'),
-    cloudcmd    = require('cloudcmd'),
-    express     = require('express'),
-    io          = require('socket.io'),
-    app         = express(),
+// var http        = require('http'),
+//     cloudcmd    = require('cloudcmd'),
+//     express     = require('express'),
+//     io          = require('socket.io'),
+//     app         = express(),
 
-    PORT        = 1337,
-    PREFIX      = '/cloudcmd',
-    server,
-    socket;
+//     PORT        = 1337,
+//     PREFIX      = '/cloudcmd',
+//     server,
+//     socket;
 
-server = http.createServer(app);
-socket = io.listen(server, {
-    path: PREFIX + '/socket.io'
-});
+// server = http.createServer(app);
+// socket = io.listen(server, {
+//     path: PREFIX + '/socket.io'
+// });
 
-app.use(cloudcmd({
-    socket: socket,     /* used by Config, Edit (optional) and Console (required)   */
-    config: {           /* config data (optional)                                   */
-        prefix: PREFIX, /* base URL or function which returns base URL (optional)   */
-    }
-}));
+// app.use(cloudcmd({
+//     socket: socket,     /* used by Config, Edit (optional) and Console (required)   */
+//     config: {           /* config data (optional)                                   */
+//         prefix: PREFIX, /* base URL or function which returns base URL (optional)   */
+//     }
+// }));
 
-server.listen(PORT);
+// server.listen(PORT);
 
 keystone.start();

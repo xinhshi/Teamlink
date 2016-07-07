@@ -1,7 +1,0 @@
-extends ../layouts/default
-include ../mixins/task
-
-block content
-	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
-			a(href='/tasks') &larr; Back to all tasks
-			+task(task)
