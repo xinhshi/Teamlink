@@ -36,15 +36,15 @@ $scope.renderHtml = function(html_code)
 
 
 $scope.refreshPosts = function() {
-   location.reload(); 
+	location.reload(); 
 };
 
 PostService.getDetail($routeParams.postId).then(function(data) {
-        $scope.post = data;
+    $scope.post = data;
 });
 
-  PostService.getCommentList().then(function(data) {
-         $scope.commentList = data;
-    });
+PostService.getCommentList().then(function(data) {
+    $scope.commentList = data;
+});
 
 }])
