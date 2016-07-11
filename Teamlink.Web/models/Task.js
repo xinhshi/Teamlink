@@ -130,7 +130,7 @@ Task.schema.methods.notifyAttendees = function(req, res, next) {
 
 Task.schema.set('toJSON', {
 	transform: function(doc, rtn, options) {
-		return _.pick(doc, '_id', 'name', 'startDate', 'endDate', 'place', 'description', 'rsvpsAvailable', 'remainingRSVPs');
+		return _.pick(doc, '_id', 'name', 'state', 'startDate', 'endDate', 'place', 'description', 'rsvpsAvailable', 'remainingRSVPs');
 	}
 });
 
