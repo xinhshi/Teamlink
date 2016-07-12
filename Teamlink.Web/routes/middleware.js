@@ -7,7 +7,9 @@
  * you have more middleware you may want to group it as separate
  * modules in your project's /lib directory.
  */
-var _ = require('underscore');
+var _ = require('underscore'),
+	querystring = require('querystring'),
+	keystone = require('keystone');
 
 
 /**
@@ -23,6 +25,9 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'BBS', key: 'blog', href: '/blog' },
 	    { label: 'App', key: 'app', href: '/app' },
 	    { label: 'Task', key: 'task', href: '/tasks' },
+
+		{ label: 'Angular BootMat',	key: 'and_bootm', href: '/ang_bootm' },
+		{ label: 'Cloudcmd', key: 'cloudcmd', href: 'http://localhost:1337/cloudcmd/' }
 
 	];
 	res.locals.user = req.user;

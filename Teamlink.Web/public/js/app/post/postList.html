@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TEAMLINK</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link href="/styles/site.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header">
+      <div class="container">
+        <div role="navigation" class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand">TEAMLINK</a>
+            </div>
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-left">
+                <li><a href="#home">Home</a></li>
+                <li class="active"><a href="#posts">BBS</a></li>
+                <li><a href="#tasks">Task</a></li>
+                <li><a href="#document">Document</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/keystone/signin">Sign In</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="body">
+      <div class="container" >
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="lead text-muted">Showing {{value}} posts</div>
+             <div class="blog" ng-show="post.state !='draft'" ng-repeat="post in postList | orderBy: '-publishedDate'">
+  
+              <div class="post media" ></div>
+              <div class="media-left"><a href=""><img ng-src="{{post.image.url}}" width="80" height="80"  class="media-object"/></a></div>
+              <div class="media-body">
+                <h3 class="media-heading"><a href="#/posts/{{post.slug}}">{{post.title}}</a></h3>
+                <p class="lead text-muted">Posted on {{post.publishedDate | date:'longDate'}} <span ng-show="post.categories.key.length">in {{post.categories.name}}</span> by {{post.author.name.first}}</p>
+                <p ng-bind-html="renderHtml(post.content.brief)"></p>
+                <p class="read-more"><a href="#/posts/{{post.slug}}">Read more...</a></p>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-sm-4" >
+            <div class="lead text-muted" >Categories</div>
+            <ul class="nav nav-pills nav-stacked" >
+              <li class="active" ><a href="#/posts">All</a></li>
+              <li role="presentation"  ng-click="refreshPosts()", ng-repeat="category in categoryList" ><a href="">{{category.name}}<span class="badge pull-right">{{postCount}}</span></a></li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <script src="/js/jquery/jquery-1.11.3.min.js"></script>
+    <script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
+  </body>
+</html>
