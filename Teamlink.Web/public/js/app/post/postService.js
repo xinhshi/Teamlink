@@ -55,12 +55,6 @@ angular.module('postServices', ['ngResource'])
             return response.data;
         });
     }
- 
-    service.getPostCategory = function() {
-        return $http.get(host + 'api/post-by-category/task').then(function(response) {
-            return response.data;
-        });
-    }
     
     return service;
 
