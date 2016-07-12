@@ -2,7 +2,7 @@ angular.module('teamlink_document_service', ['ngResource'])
 
 .factory('DocumentService', ['$http', function($http) {
     var service = {};
-    var host= 'http://localhost:3000/';
+    var host= 'http://10.69.18.84:3000/';
     
 
     service.getDocList = function() {
