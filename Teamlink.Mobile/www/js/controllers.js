@@ -41,6 +41,7 @@ angular.module('starter.controllers', [])
   };
 })
 
+/*
 .controller('PostlistCtrl', function($scope) {
   $scope.postlist = [
     { title: 'Post 1', id: 1 },
@@ -51,6 +52,15 @@ angular.module('starter.controllers', [])
     { title: 'Post 6', id: 6 }
   ];
 })
+*/
+
+.controller('PostlistCtrl', ['$routeParams', '$location', '$scope', '$sce', 'PostService',  function($routeParams, $location, $scope, $sce, PostService) {
+ 
+PostService.getList({slug: $routeParams.slug}).then(function(data) {
+    $scope.postlist = data;
+    $scope.value = data.length;
+})
+}])
 
 .controller('PostCtrl', function($scope, $stateParams) {
 });

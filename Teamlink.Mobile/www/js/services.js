@@ -4,7 +4,7 @@ angular.module('AppServices', ['ngResource'])
 
 .factory('PostService', ['$http', function($http){
     var service = {};
-    var host= 'http://localhost:3000/';
+    var host= 'http://10.69.18.84:3000/';
     
     service.getList = function() {
         return $http.get(host + 'api/post/list').then(function(response) {
