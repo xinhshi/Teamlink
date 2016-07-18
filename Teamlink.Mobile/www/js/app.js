@@ -56,10 +56,12 @@ app.config(function($stateProvider,$routeProvider, $urlRouterProvider) {
       url: '/home',
       views: {
         'menuContent': {
-          templateUrl: 'templates/home.html'
+          templateUrl: 'templates/home.html',
+          controller: 'MediaCtrl'
         }
       }
     })
+    
     .state('app.postlist', {
       url: '/postlist',
       views: {
