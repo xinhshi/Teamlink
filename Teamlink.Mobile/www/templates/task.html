@@ -1,8 +1,13 @@
 <ion-view view-title="Task">
   <ion-content>
-    <h1>{{task.name}}}</h1>
-    <h5>{{task.startDate| date:'EEEE d MMMM y h:mm a'}} - {{task.endDate| date:'EEEE d MMMM y h:mm a'}}</h5>
-    <p ng-bind-html="renderHtml(task.description)"></p>
-    
+     <div class="card">
+      <div class="item item-divider">
+         <h1>{{task.name}}</h1>
+      </div>
+      <div class="item item-body">
+        <h4>{{task.startDate| date:'EEEE d MMMM y h:mm a'}} - {{task.endDate| date:'EEEE d MMMM y h:mm a'}}</h4>
+        <p ng-bind-html="renderHtml(task.description)"></p>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

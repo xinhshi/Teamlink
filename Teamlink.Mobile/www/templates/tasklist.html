@@ -1,7 +1,7 @@
 <ion-view view-title="Tasklist">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="task in tasklist | orderBy: '-startDate'" href="#/app/tasklist/{{task.id}}">
+      <ion-item ng-repeat="task in tasklist | orderBy: '-startDate'" href="#/app/tasklist/{{task._id}}">
         {{task.name}}
       </ion-item>
     </ion-list>
