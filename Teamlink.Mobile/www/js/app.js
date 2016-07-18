@@ -32,11 +32,22 @@ app.config(function($stateProvider,$routeProvider, $urlRouterProvider) {
     controller: 'AppCtrl'
   })
 
+    .state('app.tasklist', {
+      url: '/tasklist',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/tasklist.html',
+          controller: 'TasklistCtrl'
+        }
+      }
+    })
+
   .state('app.task', {
-    url: '/task',
+    url: '/tasklist/:taskId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/task.html'
+        templateUrl: 'templates/task.html',
+        controller: 'TaskCtrl'
       }
     }
   })

@@ -44,5 +44,7 @@ angular.module('starter.services', ['ngResource'])
 
     return service;
 
-}]);
+}])
+
+;
 

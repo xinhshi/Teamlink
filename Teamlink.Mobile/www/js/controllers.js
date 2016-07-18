@@ -41,18 +41,6 @@ angular.module('starter.controllers', [])
   };
 })
 
-/*
-.controller('PostlistCtrl', function($scope) {
-  $scope.postlist = [
-    { title: 'Post 1', id: 1 },
-    { title: 'Post 2', id: 2 },
-    { title: 'Post 3', id: 3 },
-    { title: 'Post 4', id: 4 },
-    { title: 'Post 5', id: 5 },
-    { title: 'Post 6', id: 6 }
-  ];
-})
-*/
 
 .controller('PostlistCtrl', ['$routeParams', '$location', '$scope', '$sce', 'PostService',  function($routeParams, $location, $scope, $sce, PostService) {
  
@@ -72,12 +60,8 @@ $scope.renderHtml = function(html_code)
 PostService.getDetail($stateParams.postId).then(function(data) {
     $scope.post = data;
 });
-
 PostService.getCommentList().then(function(data) {
     $scope.commentList = data;
 });
 
 }])
-
-.controller('PostCdsdstrl', function($scope, $stateParams) {
-});

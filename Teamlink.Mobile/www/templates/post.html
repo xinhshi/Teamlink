@@ -1,5 +1,13 @@
 <ion-view view-title="Post">
   <ion-content>
     <h1>{{post.title}}</h1>
+    <h5>Posted on {{post.publishedDate | date:'longDate'}} <span ng-show="post.categories.key.length">in <a href="">{{post.categories.name}}</a> </span> by {{post.author.name.first}}</h5>
+    <p ng-bind-html="renderHtml(post.content.brief)"></p>
+    <p ng-bind-html="renderHtml(post.content.extended)"></p>
+    </br></br></br></br></br></br>
+    <div ng-show="comment.post == post._id" ng-repeat="comment in commentList">  
+    <img ng-src="{{comment.author.photo.url}}" alt="Profile" width="80" height="80" class="img-rounded"/>
+    <p><strong>{{comment.author.name.first}}</strong></p>
+    <p ng-bind-html="renderHtml(comment.content)"></p> </div> 
   </ion-content>
 </ion-view>
