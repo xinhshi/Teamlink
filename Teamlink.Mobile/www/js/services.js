@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('AppServices', ['ngResource'])
+angular.module('starter.services', ['ngResource'])
 
 .factory('PostService', ['$http', function($http){
     var service = {};

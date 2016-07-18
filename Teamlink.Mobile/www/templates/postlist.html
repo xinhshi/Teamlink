@@ -1,7 +1,7 @@
 <ion-view view-title="Postlist">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="post in postlist" href="#/app/postlist/{{post.id}}">
+      <ion-item ng-repeat="post in postlist" href="#/app/postlist/{{post.slug}}">
         {{post.title}}
       </ion-item>
     </ion-list>

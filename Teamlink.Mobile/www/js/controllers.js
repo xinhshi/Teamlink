@@ -62,5 +62,22 @@ PostService.getList({slug: $routeParams.slug}).then(function(data) {
 })
 }])
 
-.controller('PostCtrl', function($scope, $stateParams) {
+.controller('PostCtrl', ['$routeParams','$stateParams', '$location', '$scope', '$sce', 'PostService', function($routeParams, $stateParams, $location, $scope, $sce, PostService) {
+
+$scope.renderHtml = function(html_code)
+{
+    return $sce.trustAsHtml(html_code);
+};
+
+PostService.getDetail($stateParams.postId).then(function(data) {
+    $scope.post = data;
+});
+
+PostService.getCommentList().then(function(data) {
+    $scope.commentList = data;
+});
+
+}])
+
+.controller('PostCdsdstrl', function($scope, $stateParams) {
 });
