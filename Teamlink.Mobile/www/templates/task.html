@@ -1,5 +1,8 @@
 <ion-view view-title="Task">
   <ion-content>
-    <h1>Task</h1>
+    <h1>{{task.name}}}</h1>
+    <h5>{{task.startDate| date:'EEEE d MMMM y h:mm a'}} - {{task.endDate| date:'EEEE d MMMM y h:mm a'}}</h5>
+    <p ng-bind-html="renderHtml(task.description)"></p>
+    
   </ion-content>
 </ion-view>

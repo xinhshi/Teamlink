@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-
+//post
 .controller('PostlistCtrl', ['$routeParams', '$location', '$scope', '$sce', 'PostService',  function($routeParams, $location, $scope, $sce, PostService) {
  
 PostService.getList({slug: $routeParams.slug}).then(function(data) {
@@ -65,3 +65,42 @@ PostService.getCommentList().then(function(data) {
 });
 
 }])
+
+
+//task
+.controller('TasklistCtrl', ['$routeParams', '$location', '$scope','$sce' , 'TaskService', function($routeParams, $location, $scope, $sce, TaskService) {
+ 
+
+ TaskService.getList().then(function(data) {
+        $scope.tasklist = data;
+        $scope.value = data.length;
+
+   });
+
+$scope.renderHtml = function(html_code)
+{
+    return $sce.trustAsHtml(html_code);
+};
+}])
+
+
+.controller('TaskCtrl', ['$routeParams', '$stateParams', '$location', '$scope', '$sce', 'TaskService',function($routeParams, $stateParams, $location, $scope, $sce, TaskService) {
+ 
+ TaskService.getDetail($stateParams.taskId).then(function(data) {
+        $scope.task = data;
+   })
+ 
+  TaskService.getCommentList().then(function(data) {
+        $scope.commentList = data;
+   })
+
+  TaskService.getParticipant($stateParams.taskId).then(function(data) {
+        $scope.participantNumber = data.length;
+   });
+
+$scope.renderHtml = function(html_code)
+{
+    return $sce.trustAsHtml(html_code);
+};
+
+}]);
