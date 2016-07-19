@@ -18,6 +18,7 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
+var keystone = require('underscore');
 var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
@@ -34,22 +35,45 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views'),
+	api: importRoutes('./api')
 };
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
     
-
 	// Views
-	app.get('/', routes.views.index);
-	app.get('/blog/:category?', routes.views.blog);
-	app.all('/blog/post/:post', routes.views.post);
-    
-    app.get('/app', function(req,res){
-    	res.sendFile(path.join(__dirname,'../templates/views','app.html'));
+	app.get('/', function(req,res){
+    	res.sendFile(path.join(__dirname, '../templates/views','app.html'));
 	});
+	app.get('/app', function(req,res){
+    	res.sendFile(path.join(__dirname, '../templates/views','app.html'));
+	});
+	
 
-	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
-	// app.get('/protected', middleware.requireUser, routes.views.protected);
+	// API - post
+    app.get('/api/post/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.list);
+	app.all('/api/post/create', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.create);
+	app.get('/api/post/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.get);
+	app.all('/api/post/:id/update', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.update);
+	app.get('/api/post/:id/remove', [keystone.middleware.api, keystone.middleware.cors], routes.api.posts.remove);
+
+	app.get('/api/post-category/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.post_categories.list);
+    app.get('/api/post-category/:key', [keystone.middleware.api, keystone.middleware.cors], routes.api.post_categories.get);
+	app.get('/api/post-by-category/:key', [keystone.middleware.api, keystone.middleware.cors], routes.api.post_by_category.list);
+
+	app.get('/api/comment/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.comments.list);
+	app.get('/api/comment/:post', [keystone.middleware.api, keystone.middleware.cors], routes.api.comments.get);
+
+	// API - task
+	app.get('/api/task/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.task.list);
+	app.get('/api/task/:_id', [keystone.middleware.api, keystone.middleware.cors], routes.api.task.get);
+	app.all('/api/rsvp/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.rsvp.list);
+    app.all('/api/rsvp/:task', [keystone.middleware.api, keystone.middleware.cors], routes.api.rsvp.get);
+	
+	app.get('/api/taskcomment/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.taskcomment.list);
+	app.get('/api/taskcomment/:_id', [keystone.middleware.api, keystone.middleware.cors], routes.api.taskcomment.get);
+
+	// API - document
+    app.get('/api/document/list', [keystone.middleware.api, keystone.middleware.cors], routes.api.document.list);
+	app.get('/api/document/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.document.get);
 };

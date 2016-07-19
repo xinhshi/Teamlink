@@ -45,6 +45,7 @@ keystone.set('locals', {
 	_: require('underscore'),
 	env: keystone.get('env'),
 	utils: keystone.utils,
+	plural: keystone.utils.plural,
 	editable: keystone.content.editable,
 });
 
@@ -82,9 +83,36 @@ keystone.set('email tests', require('./routes/emails'));
 keystone.set('nav', {
 	posts: ['posts', 'post-comments', 'post-categories'],
 	users: 'users',
+	tasks: ['tasks', 'task-comments', 'rsvps'],
+
 });
 
 // Start Keystone to connect to your database and initialise the web server
 
+//cloudcmd
+// var http        = require('http'),
+//     cloudcmd    = require('cloudcmd'),
+//     express     = require('express'),
+//     io          = require('socket.io'),
+//     app         = express(),
+
+//     PORT        = 1337,
+//     PREFIX      = '/cloudcmd',
+//     server,
+//     socket;
+
+// server = http.createServer(app);
+// socket = io.listen(server, {
+//     path: PREFIX + '/socket.io'
+// });
+
+// app.use(cloudcmd({
+//     socket: socket,     /* used by Config, Edit (optional) and Console (required)   */
+//     config: {           /* config data (optional)                                   */
+//         prefix: PREFIX, /* base URL or function which returns base URL (optional)   */
+//     }
+// }));
+
+// server.listen(PORT);
 
 keystone.start();
