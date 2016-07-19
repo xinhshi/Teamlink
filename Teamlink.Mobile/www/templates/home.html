@@ -1,9 +1,18 @@
 <ion-view view-title="Home">
-      <ion-content class="has-header padding" ng-controller="MediaCtrl">
-        <a class="item item-list-detail">
-            <ion-scroll direction="x">
-                <img ng-repeat="image in allImages" ng-src="{{image.src}}" ng-click="showImages($index)" class="image-list-thumb"/>
-            </ion-scroll>
-        </a>
+      <ion-content>
+
+    <div id="sliderFrame">
+        <div id="slider">
+            <a href="http://www.menucool.com/javascript-image-slider" target="_blank">
+                <img src="img/1336462589861.jpg" alt="" />
+            </a>
+            <img src="img/1336462589861.jpg" />
+            <img src="img/1336462607767.jpg" alt="" />
+            <img src="img/1336465842205.jpg" alt="" />
+            <img src="img/1336466039264.jpg" />
+            <img src="img/1336549835576.jpg" />
+        </div>
+    </div>
+    
       </ion-content>
 </ion-view>

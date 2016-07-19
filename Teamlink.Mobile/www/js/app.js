@@ -56,8 +56,7 @@ app.config(function($stateProvider,$routeProvider, $urlRouterProvider) {
       url: '/home',
       views: {
         'menuContent': {
-          templateUrl: 'templates/home.html',
-          controller: 'MediaCtrl'
+          templateUrl: 'templates/home.html'
         }
       }
     })

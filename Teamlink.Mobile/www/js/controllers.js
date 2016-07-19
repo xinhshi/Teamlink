@@ -1,41 +1,5 @@
 angular.module('starter.controllers', [])
 
-.controller('MediaCtrl', function($scope, $ionicModal) {
-
-    $scope.allImages = [{
-        'src' : 'img/1336462589861.jpg'
-    }, {
-        'src' : 'img/1336462607767.jpg'
-    }, {
-        'src' : 'img/1336465842205.jpg'
-    },{
-        'src' : 'img/1336466039264.jpg'
-    },{
-        'src' : 'img/1336549835576.jpg'
-    }];
-
-    $scope.showImages = function(index) {
-        $scope.activeSlide = index;
-        $scope.showModal('templates/image-popover.html');
-    }
-
-    $scope.showModal = function(templateUrl) {
-        $ionicModal.fromTemplateUrl(templateUrl, {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.modal = modal;
-            $scope.modal.show();
-        });
-    }
-
-    // Close the modal
-    $scope.closeModal = function() {
-        $scope.modal.hide();
-        $scope.modal.remove()
-    };
-})
-
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
