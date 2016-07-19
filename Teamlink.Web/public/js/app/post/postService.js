@@ -4,7 +4,7 @@ angular.module('postServices', ['ngResource'])
 
 .factory('PostService', ['$http', function($http){
     var service = {};
-    var host= 'http://localhost:3000/';
+    var host= 'http://10.69.18.84:3000/';
     
     service.getList = function() {
         return $http.get(host + 'api/post/list').then(function(response) {
@@ -48,7 +48,7 @@ angular.module('postServices', ['ngResource'])
 
 .factory('PostCategory', ['$http', function($http){
     var service = {};
-    var host= 'http://localhost:3000/';
+    var host= 'http://10.69.18.84:3000/';
 
     service.getCategoryList = function() {
         return $http.get(host + 'api/post-category/list').then(function(response) {
