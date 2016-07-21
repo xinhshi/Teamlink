@@ -1,0 +1,60 @@
+
+/* Calendar
+==================================*/
+
+
+/* base */
+
+.calendar {
+	border-radius: 25px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 2px 0 rgba(0,0,0,0.04);
+	text-align: center;
+	text-transform: uppercase;
+	width: 45px;
+}
+
+.calendar--past {
+	color: lighten(#000, 46.7%);
+
+	border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    background-color: mix(black, #fff, 30%);
+	color: white;
+	line-height: 24px;
+	margin: 1px 1px 0;
+	height: 20px;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+
+/* header */
+
+.calendar__header {
+	border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+	background-color: #d9534f;
+	color: white;
+	line-height: 24px;
+	margin: 1px 2px 0;
+	height: 20px;
+	font-size: 10px;
+    font-weight: bold;
+}
+
+
+/* body */
+
+.calendar__body {
+	line-height: 1;
+	padding-bottom: 5px;
+	font-size: 10px;
+	font-weight: bold;	
+}
+
+.calendar__date {
+	font-size: 9px;
+}
+
+
+/* specifically on a meetup */ 

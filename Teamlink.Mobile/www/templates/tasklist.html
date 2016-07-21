@@ -1,9 +1,26 @@
 <ion-view view-title="Tasklist">
-  <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="task in tasklist | orderBy: '-startDate'" href="#/app/tasklist/{{task._id}}">
-        {{task.name}}
-      </ion-item>
-    </ion-list>
+  <ion-content class="padding">
+      <section id="cd-timeline" class="cd-container">
+        <ion-item  class="item card-item" ng-repeat="task in tasklist | orderBy: '-startDate'" href="#/app/tasklist/{{task._id}}">
+          <div class="cd-timeline-block">
+          	<!-- CUSTOMIZE YOUR STYLE USING DEFAULT IONIC VALUES SUCH AS POSITIVE, CALM, BALANCED,... -->
+            <div class="cd-timeline-picture text-center dark">
+              <div class="meetup-calendar calendar hidden-xs hidden-sm">
+                <div class="calendar__header">{{task.endDate| date:'MMMM'}}</div>
+                <div class="calendar__body">
+                <div class="calendar__date">{{task.endDate| date:'d'}}</div>
+                <div class="calendar__year">{{task.endDate| date:'y'}}</div>
+              </div>
+             </div>
+            </div>
+            <!-- CUSTOMIZE YOUR STYLE USING DEFAULT IONIC VALUES SUCH AS POSITIVE, CALM, BALANCED,... -->
+            <div class="cd-timeline-content padding dark">
+            	<h5 class="marginBottom0 marginTop0">{{task.name}}</h5>
+            	<p class="marginTop5 cd-author">from {{task.startDate | date:'longDate'}} to {{task.endDate | date:'longDate'}}</p>
+              <p class="timelineText" ng-bind-html="renderHtml(task.description)"></p>
+            </div>
+          </div>
+        </ion-item>
+      </section>
   </ion-content>
 </ion-view>
