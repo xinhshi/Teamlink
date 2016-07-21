@@ -1,13 +1,38 @@
 <ion-view view-title="Task">
   <ion-content>
-     <div class="card">
-      <div class="item item-divider">
-         <h1>{{task.name}}</h1>
-      </div>
-      <div class="item item-body">
-        <h4>{{task.startDate| date:'EEEE d MMMM y h:mm a'}} - {{task.endDate| date:'EEEE d MMMM y h:mm a'}}</h4>
-        <p ng-bind-html="renderHtml(task.description)"></p>
+    <div class="item card-item">
+      <div class="card stable-bg ink ink-dark">
+        <div class="item item-divider">
+          <h1>{{task.name}}</h1>
+        </div>
+        <div class="item item-body">
+          <h4>{{task.startDate| date:'EEEE d MMMM y h:mm a'}} - {{task.endDate| date:'EEEE d MMMM y h:mm a'}}</h4>
+          <p ng-bind-html="renderHtml(task.description)"></p>
+          <div class="card-footer text-center">
+            <div class="h1 text-muted mb-0">{{participantNumber}}</div>
+            <div class="lead text-muted"> people are participating in this task</div>
+          </div>
+        </div>
+    
+        <div class="item item-divider">
+          <div class="list card" ng-show="comment.task == task._id" ng-repeat="comment in commentList"> 
+            <div class="item item-avatar">
+              <img ng-src="{{comment.author.photo.url}}" alt="Profile">
+              <h2>{{comment.author.name.first}}</h2>
+              <p>{{comment.publishedOn | date:'longDate'}}</p>
+            </div>
+            <div class="item item-text-wrap">
+              <p ng-bind-html="renderHtml(comment.description)"></p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </ion-content>
 </ion-view>
+
+
+
+
+

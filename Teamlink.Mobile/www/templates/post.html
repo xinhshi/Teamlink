@@ -1,25 +1,29 @@
 <ion-view view-title="Post">
   <ion-content>    
-    <div class="card">
-      <div class="item item-divider">
-         <h1>{{post.title}}</h1>
-      </div>
+    <div class="item card-item">
+      <div class="card stable-bg ink ink-dark">
+        <div class="item item-divider">
+           <h1>{{post.title}}</h1>
+        </div>
       <div class="item item-body">
         <h4>Posted on {{post.publishedDate | date:'longDate'}} <span ng-show="post.categories.key.length">in <a href="">{{post.categories.name}}</a> </span> by {{post.author.name.first}}</h4>
+        <img class="image" ng-src="{{post.image.url}}">
         <p ng-bind-html="renderHtml(post.content.brief)"></p>
         <p ng-bind-html="renderHtml(post.content.extended)"></p>  
       </div>
-    </div>
-    </br></br></br></br></br></br>
-    <div class="list card" ng-show="comment.post == post._id" ng-repeat="comment in commentList"> 
-      <div class="item item-avatar">
-      <img ng-src="{{comment.author.photo.url}}" alt="Profile">
-      <h2>{{comment.author.name.first}}</h2>
-      <p>{{comment.publishedOn | date:'longDate'}}</p>
-    </div>
-    <div class="item item-text-wrap">
-      <p ng-bind-html="renderHtml(comment.content)"></p>
+      <div class="item item-divider">
+        <div class="list card" ng-show="comment.post == post._id" ng-repeat="comment in commentList"> 
+          <div class="item item-avatar">
+            <img ng-src="{{comment.author.photo.url}}" alt="Profile">
+            <h2>{{comment.author.name.first}}</h2>
+            <p>{{comment.publishedOn | date:'longDate'}}</p>
+          </div>
+          <div class="item item-text-wrap">
+            <p ng-bind-html="renderHtml(comment.content)"></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  </ion-content>
+ </ion-content> 
 </ion-view>

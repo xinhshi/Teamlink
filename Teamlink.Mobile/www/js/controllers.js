@@ -41,15 +41,20 @@ angular.module('starter.controllers', [])
   };
 })
 
-//post
+//postlist
 .controller('PostlistCtrl', ['$routeParams', '$location', '$scope', '$sce', 'PostService',  function($routeParams, $location, $scope, $sce, PostService) {
  
 PostService.getList({slug: $routeParams.slug}).then(function(data) {
     $scope.postlist = data;
-    $scope.value = data.length;
+    $scope.postvalue = data.length;
 })
+PostService.getCommentList().then(function(data) {
+    $scope.commentList = data;
+    $scope.commentvalue = data.length;
+});
 }])
 
+//post
 .controller('PostCtrl', ['$routeParams','$stateParams', '$location', '$scope', '$sce', 'PostService', function($routeParams, $stateParams, $location, $scope, $sce, PostService) {
 
 $scope.renderHtml = function(html_code)
