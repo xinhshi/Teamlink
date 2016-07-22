@@ -8,12 +8,13 @@
 }
 #sliderFrame 
 {
-    width:700px;
+    width:350px;
     margin:0 auto; /*center-aligned*/
+    padding-top: 50px;
 }
 
 #slider, #slider .sliderInner {
-    width:700px;height:306px;/* Must be the same size as the slider images */
+    width:350px;height:153px;/* Must be the same size as the slider images */
     border-radius:3px;
 }
 
@@ -61,7 +62,7 @@
 
 /* ------ built-in navigation bullets wrapper ------*/
 #slider .navBulletsWrapper  {
-    top:320px;
+    top:160px;
     text-align:center;
     background:none;
     position:relative;
