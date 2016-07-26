@@ -81,7 +81,7 @@ app.config(function($stateProvider,$routeProvider, $urlRouterProvider) {
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/postlist');
+  $urlRouterProvider.otherwise('/app/home');
 });
 
 
