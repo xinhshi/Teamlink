@@ -7,7 +7,7 @@
         </div>
       <div class="item item-body">
         <h4>Posted on {{post.publishedDate | date:'longDate'}} <span ng-show="post.categories.key.length">in <a href="">{{post.categories.name}}</a> </span> by {{post.author.name.first}}</h4>
-        <img class="image" ng-src="{{post.image.url}}">
+        <img class="image" ng-src="{{post.image.url}}" style="width:40%; height:40%">
         <p ng-bind-html="renderHtml(post.content.brief)"></p>
         <p ng-bind-html="renderHtml(post.content.extended)"></p>  
       </div>
@@ -22,8 +22,19 @@
             <p ng-bind-html="renderHtml(comment.content)"></p>
           </div>
         </div>
+
+        <form ng-submit="submit()">
+          <br />
+          <textarea ng-model="post.comment" style="width:100%; height:100px" placeholder="Compose your comment here..."></textarea>
+          <input class="button button-block button-positive" type="submit" name="submit" value="Submit Comment">                    
+        </form>
+
+          
       </div>
     </div>
   </div>
+
+
+
  </ion-content> 
 </ion-view>

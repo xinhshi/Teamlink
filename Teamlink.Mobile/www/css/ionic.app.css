@@ -7763,6 +7763,7 @@ input[type="color"] {
   width: 100%; }
 
 textarea {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   padding-left: 0; }
   textarea::-moz-placeholder {
     color: #889ab0; }
