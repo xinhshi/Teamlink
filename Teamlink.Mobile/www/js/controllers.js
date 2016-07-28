@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $filter, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -39,6 +39,42 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+
+  //search bar
+ $scope.datapointsList = [
+    {LINK:'#/app/home' , ICON:  'icon ion-home' , DPNAME: 'Home', id: 1 },
+    {LINK:'#/app/postlist' , ICON:  'ion-ios-chatboxes',  DPNAME: 'Post', id: 2 },
+    {LINK:'#/app/tasklist' , ICON:  'icon ion-folder',  DPNAME: 'Task', id: 3 }
+
+  ];
+
+  $scope.names=$scope.datapointsList ;
+   $scope.adn = {};
+	 $scope.srchchange = function () {
+
+        $scope.names = null;
+        var filtervalue = [];
+		var serachData=$scope.datapointsList;
+		console.log(serachData);
+        for (var i = 0; i <serachData.length; i++) {
+
+            var fltvar = $filter('uppercase')($scope.adn.item);
+            var jsval = $filter('uppercase')(serachData[i].DPNAME);
+
+            if (jsval.indexOf(fltvar) >= 0) {
+                filtervalue.push(serachData[i]);
+            }
+        }
+       // console.log("last");
+        console.log(filtervalue);
+        $scope.names = filtervalue;
+    };
+
+    $scope.ressetserach = function () {
+        $scope.adn.item = "";
+        $scope.names =$scope.datapointsList;
+    }
+
 })
 
 //postlist

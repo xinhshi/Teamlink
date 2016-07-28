@@ -10,7 +10,6 @@
       </ion-nav-buttons>
 
       <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-ios-search"></button>
         <button class="button button-icon button-clear ion-ios-more" menu-toggle="right"></button>
       </ion-nav-buttons>
 
@@ -24,8 +23,10 @@
       <img src="img/squarelogo.png" alt="">
       <label class="item-input-wrapper">
         <i class="icon ion-ios-search placeholder-icon"></i>
-        <input type="search" placeholder="Jump to conversation...">
+        <input type="search" placeholder="Search" ng-change="srchchange()" ng-model="adn.item">
+
       </label>
+      
     </ion-header-bar>
     <ion-content class="royal-bg">
 
@@ -36,13 +37,12 @@
 
       <ion-list>
         <ion-item ion-affix class="item-divider">Channels</ion-item>
-        <ion-item href="#/app/home" menu-close class="item-channel"><i class="icon ion-home"></i> Home</ion-item>
-        <ion-item href="#/app/postlist" menu-close class="item-channel"><i class="ion-ios-chatboxes"></i> Post</ion-item>
-      </ion-list>
-
-      <ion-list>
-        <ion-item ion-affix class="item-divider">Document</ion-item>
-        <ion-item href="#/app/tasklist" menu-close class="item-channel"><i class="icon ion-folder"></i> Task</ion-item>
+        <div ng-repeat="x in names"  data="{{names}}" ng-click="getDatapointId(names)" >
+          <ion-item href="{{x.LINK}}" menu-close class="item-channel"><i class="{{x.ICON}}"></i> {{x.DPNAME}}</ion-item>
+        </div>
+        <div ng-if="names !== undefined && !names.length" class="no-results">
+          <ion-item >No Results Found..</ion-item >
+        </div>
       </ion-list>
 
     </ion-content>
